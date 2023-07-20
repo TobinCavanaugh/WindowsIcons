@@ -8,39 +8,88 @@ class Program
 {
     public static void Main(string[] args)
     {
-        string path = @"C:\Users\TobinC\Documents\Windows Icons\WindowsIcons\";
+        Console.WriteLine("Enter your path to export images: (Default = NONE)");
+        string imageExportPath = Console.ReadLine();
 
-        // if (args[0] != "")
-        // {
-        //     path = args[0];
-        // }
-        //
-        // //Generate the icon files
-        // for (uint i = 0; i < 181; i++)
-        // {
-        //     try
-        //     {
-        //         var icon = DefaultIcons.GetStockIcon(i, DefaultIcons.SHGSI_LARGEICON);
-        //         icon.ToBitmap().Save(path + i.ToString("000") + ".png", ImageFormat.Png);
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //     }
-        // }
+        if (imageExportPath == "" || imageExportPath == null || imageExportPath == " ")
+        {
+            Console.WriteLine("Not a valid path!");
+            return;
+        }
 
-        var mdFile = File.CreateText(path + "readme.md");
+        if (!imageExportPath.EndsWith("\\"))
+        {
+            imageExportPath += @"\";
+        }
 
+        //Generate the icon files
+        for (uint i = 0; i < 181; i++)
+        {
+            try
+            {
+                //Get the icon
+                var icon = DefaultIcons.GetStockIcon(i, DefaultIcons.SHGSI_LARGEICON);
+
+                //Calculate the path
+                string spath = imageExportPath + i.ToString("000") + ".png";
+
+                //Save the image
+                icon.ToBitmap().Save(spath, ImageFormat.Png);
+
+                Console.WriteLine($"Wrote to {spath}");
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        Console.WriteLine("Generate MD File? Y/N (Default = \"Y\")");
+        if (Console.ReadLine().ToLower().Contains("n"))
+        {
+            return;
+        }
+
+        //Open/Create the file
+        var mdFile = File.CreateText(imageExportPath + "generated.md");
+
+        //Clear it
         mdFile.Flush();
 
         string[] names = Enum.GetNames(typeof(DefaultIconTypes));
-        Array values = Enum.GetValues(typeof(DefaultIconTypes));
+
+        List<(string, int)> values = new();
+        for (int i = 0; i < names.Length; i++)
+        {
+            values.Add((names[i], i));
+        }
+
+        Console.WriteLine("Image MD File Path Prefix (Default = \"./\")");
+        string prefix = "./";
+
+        string readPrefix = Console.ReadLine();
+        
+        //If its an actual prefix
+        if (!(readPrefix == "" || readPrefix == null || readPrefix == " "))
+        {
+            prefix = readPrefix;
+        }
+        
+        
+        
+        
+        //Do custom sorting here
+        var sortedVals = values.OrderBy(x => x.Item1).ToList();
+        
 
         for (int i = 0; i < names.Length; i++)
         {
-            string current = ("## " + "⤹ " + names[i]);
+            //Make a subheader with the name
+            string current = ("## " + "⤹ " + sortedVals[i].Item1);
 
+            //This seperation will break up abbreviation
             current = SeparateString(current);
 
+            //Recombine the abbreviations manually (not ideal but whatever )
             current = current.Replace("D V D", "DVD");
             current = current.Replace("R A M", "RAM");
             current = current.Replace("R O M", "ROM");
@@ -55,54 +104,57 @@ class Program
             current = current.Replace("M P3", "MP3");
             current = current.Replace("R E", "RE");
 
+            //Add a newline
             current += "\n";
-            
-            current += $"![{names[i]}](https://github.com/TobinCavanaugh/WindowsIcons/blob/main/WindowsIcons/icons/{i.ToString("000")}.png)";
 
+            //Paste in the image with a local path
+            //TODO If you're messing with this, change the path here to have subfolders etc
+            current += $"![{names[i]}]({prefix}{sortedVals[i].Item2.ToString("000")}.png)";
 
-            current += $"\t `DefaultIconTypes.{names[i]}` | `{i.ToString("000")}`";
-            
+            //This puts the enum reference and enum value into code blocks for easy copy paste
+            current += $"\t `DefaultIconTypes.{sortedVals[i].Item1}` | `{sortedVals[i].Item2.ToString("000")}`";
+
+            //Add this whole dealio onto the md file
             mdFile.WriteLine(current);
         }
 
+        //Add a lil tag on the end, feel free to remove this idc
+        mdFile.WriteLine(
+            "\nMarkdown file generated using <a href=\"https://github.com/TobinCavanaugh/WindowsIcons\"> Windows Icons </a>");
+
+        //Close the file
         mdFile.Close();
+
+        Console.WriteLine("Generated MD file successfully!");
     }
 
-    public static string SeparateString(string current)
+    /// <summary>
+    /// Separates the string by caps, taking into account spaces
+    /// </summary>
+    /// <param name="current"></param>
+    /// <returns></returns>
+    private static string SeparateString(string current)
     {
-        List<string> ignoredAbbreviations = new List<string>
-        {
-            "DVD",
-            "RAM",
-            "ROM",
-            "RW",
-            "ZIP",
-            "OK",
-            "HD",
-            "SV",
-            "CD",
-            "USB",
-        };
-
         StringBuilder result = new StringBuilder();
         char[] characters = current.ToCharArray();
 
+        //Go through the string
         for (int i = 0; i < characters.Length; i++)
         {
-            if (i > 0 && char.IsUpper(characters[i]) && !char.IsWhiteSpace(characters[i - 1]) &&
-                !IsAbbreviation(current.Substring(i - 1, 2), ignoredAbbreviations))
+            //Requirements for split:
+            // - Not the first character
+            // - Is uppercase
+            // - Previous character isnt space
+            if (i > 0 && char.IsUpper(characters[i]) && !char.IsWhiteSpace(characters[i - 1]))
             {
+                //Append the space 
                 result.Append(' ');
             }
 
+            //Then append the rest of the string
             result.Append(characters[i]);
         }
 
         return result.ToString();
-    }
-
-    private static bool IsAbbreviation(string potentialAbbreviation, List<string> abbreviations)
-    {
-        return abbreviations.Contains(potentialAbbreviation);
     }
 }
