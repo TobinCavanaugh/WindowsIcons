@@ -57,7 +57,7 @@ class Program
 
             current += "\n";
             
-            current += $"![image info](./icons/{i.ToString("000")}.png)";
+            current += $"![{names[i]}](https://github.com/TobinCavanaugh/WindowsIcons/blob/main/WindowsIcons/icons/{i.ToString("000")}.png)";
 
 
             current += $"\t `DefaultIconTypes.{names[i]}` | `{i.ToString("000")}`";
