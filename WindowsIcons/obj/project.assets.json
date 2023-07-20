@@ -133,11 +133,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\TobinC\\Documents\\Windows Icons\\WindowsIcons\\WindowsIcons\\WindowsIcons\\WindowsIcons.csproj",
+      "projectUniqueName": "C:\\Users\\TobinC\\Documents\\Windows Icons\\WindowsIcons\\WindowsIcons\\WindowsIcons.csproj",
       "projectName": "WindowsIcons",
-      "projectPath": "C:\\Users\\TobinC\\Documents\\Windows Icons\\WindowsIcons\\WindowsIcons\\WindowsIcons\\WindowsIcons.csproj",
+      "projectPath": "C:\\Users\\TobinC\\Documents\\Windows Icons\\WindowsIcons\\WindowsIcons\\WindowsIcons.csproj",
       "packagesPath": "C:\\Users\\TobinC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\TobinC\\Documents\\Windows Icons\\WindowsIcons\\WindowsIcons\\WindowsIcons\\obj\\",
+      "outputPath": "C:\\Users\\TobinC\\Documents\\Windows Icons\\WindowsIcons\\WindowsIcons\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\TobinC\\AppData\\Roaming\\NuGet\\NuGet.Config",

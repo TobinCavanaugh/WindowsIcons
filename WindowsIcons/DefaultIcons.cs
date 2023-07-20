@@ -45,11 +45,7 @@ namespace WindowsIcons
         private const uint SHGSI_ICON = 0x100;
         public const uint SHGSI_LARGEICON = 0x0;
         public const uint SHGSI_SMALLICON = 0x1;
-
-
-        public Dictionary<string, icon>
     }
-
 
     public enum DefaultIconTypes
     {

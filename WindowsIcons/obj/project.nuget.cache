@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2tM9p9ZXLRpKpG/XxCVLGOFzz6JlJpg3HBYZm1psfk/jLYgfq34YGt3B9/HbN/mbSaaUtTIFM4N4YHfh7Wglag==",
+  "dgSpecHash": "kSLwyw089aJJt3ie/4qP6/V+RlQVvYkRiFaYpMrocQUhg/UIm+OYILOKH1EYUaEtnYS/O3xBy7pF6aC92A3BxA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\TobinC\\Documents\\Windows Icons\\WindowsIcons\\WindowsIcons\\WindowsIcons\\WindowsIcons.csproj",
+  "projectFilePath": "C:\\Users\\TobinC\\Documents\\Windows Icons\\WindowsIcons\\WindowsIcons\\WindowsIcons.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TobinC\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0-preview.5.23280.8\\microsoft.win32.systemevents.8.0.0-preview.5.23280.8.nupkg.sha512",
     "C:\\Users\\TobinC\\.nuget\\packages\\system.drawing.common\\8.0.0-preview.5.23280.5\\system.drawing.common.8.0.0-preview.5.23280.5.nupkg.sha512"
