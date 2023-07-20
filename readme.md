@@ -5,6 +5,7 @@
 - Add "using WindowsIcons" to the top of the file you want to get icons in.
 - Call DefaultIcons.GetStockIcon() with the value of DefaultIconTypes that you want.
 - View the icon list to find what you are looking for.
+- All these files come from shell32.dll, I bet it'd be really easy to adapt this to use a different DLL with different icons. Give it a shot!
 ---
 ### Mislabeled Icons:
 - Make a merge request and I'll check it out. If you want to expand the names or add more detail that'd be great!
