@@ -1,3 +1,27 @@
+# Windows Icons
+### How to use:
+- Download DefaultIcons.cs from the Releases tab.
+- Place it in your project.
+- Add "using WindowsIcons" to the top of the file you want to get icons in.
+- Call DefaultIcons.GetStockIcon() with the value of DefaultIconTypes that you want.
+- View the icon list to find what you are looking for.
+- All these files come from shell32.dll, I bet it'd be really easy to adapt this to use a different DLL with different icons. Give it a shot!
+---
+### Mislabeled Icons:
+- Make a merge request and I'll check it out. If you want to expand the names or add more detail that'd be great!
+- If something is misplaced or wrong let me know.
+---
+### Program.cs:
+- Program.cs is a utility if you want to download the images for use locally as PNG's.
+- You should just be able to run it like any .cs file.
+---
+### Copyright and stuff:
+- I don't own any of these icons, they're from Microsoft windows.
+- Microsoft, if you want this not online anymore let me know, I'll take it down.
+- Im not sure the user licensing for Windows icons. My understanding is that if you use DefaultIcons.cs you should be fine as you're accessing files already on your computer. But i'm not a lawyer, so not legal advice.
+---
+# Icon List (a-Z):
+
 ## ⤹ Battery Folder
 ![NewPage](https://github.com/TobinCavanaugh/WindowsIcons/blob/main/WindowsIcons/icons/051.png)	 `DefaultIconTypes.BatteryFolder` | `051`
 ## ⤹ BD R
