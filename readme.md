@@ -20,7 +20,7 @@
 - Microsoft, if you want this not online anymore let me know, I'll take it down.
 - Im not sure the user licensing for Windows icons. My understanding is that if you use DefaultIcons.cs you should be fine as you're accessing files already on your computer. But i'm not a lawyer, so not legal advice.
 ---
-# Icon List:
+# Icon List (a-Z):
 
 ## ⤹ Battery Folder
 ![NewPage](https://github.com/TobinCavanaugh/WindowsIcons/blob/main/WindowsIcons/icons/051.png)	 `DefaultIconTypes.BatteryFolder` | `051`
