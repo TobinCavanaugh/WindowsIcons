@@ -28,7 +28,7 @@ class Program
             try
             {
                 //Get the icon
-                var icon = DefaultIcons.GetStockIcon(i, DefaultIcons.SHGSI_LARGEICON);
+                var icon = DefaultIcons.GetIcon((DefaultIconTypes) i);
 
                 //Calculate the path
                 string spath = imageExportPath + i.ToString("000") + ".png";

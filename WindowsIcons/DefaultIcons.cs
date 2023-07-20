@@ -11,12 +11,12 @@ namespace WindowsIcons
     /// </summary>
     class DefaultIcons
     {
-        public static Icon GetStockIcon(uint type, uint size)
+        public static Icon GetIcon(DefaultIconTypes type)
         {
             var info = new SHSTOCKICONINFO();
             info.cbSize = (uint) Marshal.SizeOf(info);
 
-            SHGetStockIconInfo(type, SHGSI_ICON | size, ref info);
+            SHGetStockIconInfo((uint) type, SHGSI_ICON | SHGSI_LARGEICON, ref info);
 
             var icon = (Icon) Icon.FromHandle(info.hIcon).Clone(); // Get a copy that doesn't use the original handle
             DestroyIcon(info.hIcon); // Clean up native icon to prevent resource leak
